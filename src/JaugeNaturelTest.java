@@ -10,7 +10,7 @@ public class JaugeNaturelTest {
 
 	@Before
 	public void setUp() throws Exception {
-		jauge = new JaugeNaturel(100, 345,67899);
+		jauge = new JaugeNaturel(100, 345, 67899);
 	}
 
 	@After
@@ -48,7 +48,7 @@ public class JaugeNaturelTest {
 
 	@Test
 	public void testDecrementer() {
-		long val = jauge.getValeur(); 
+		long val = jauge.getValeur();
 		jauge.decrementer();
 		assertEquals("ma jauge est bien décrémenté! Youpii",val-1, jauge.getValeur());
 	}
@@ -58,11 +58,18 @@ public class JaugeNaturelTest {
 		assertEquals("Affichage Parfait !! ", "<50 [8,50]>", jauge.toString());
 	}
 	
-	public static void main(String[] args) {
-		 JaugeNaturelTest jauge = new JaugeNaturelTest();
-		 try {
-			 jauge.setUp();
-		 }catch(Exception e){}
+	@Test
+	public void testInferieurIntervalle(){
+	  for(int i = 0; i < 2; i++){
+	    if(i == 0){
+	      jauge = new JaugeNaturel(12,18,3);
+	    }else{
+	      jauge = new JaugeNaturel(12,18,12);
+	    }
+	    assertTrue(jauge.estBleu());
+	    assertFalse(jauge.estVert());
+	    assertFalse(jauge.estRouge());
+	  }
 	}
 
 }
