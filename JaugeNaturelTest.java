@@ -60,6 +60,7 @@ public class JaugeNaturelTest {
 
 	@Test
 	public void testDansIntervalle() {
+<<<<<<< HEAD
 		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
 		
 	}
@@ -85,6 +86,15 @@ public class JaugeNaturelTest {
 		assertFalse("min = max", jauge.getMin==jauge.getMax);
 	}
 	
+=======
+		
+		
+		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
+		
+		
+	}
+
+>>>>>>> branch 'master' of https://github.com/M4RCF0UQU3/JavaTest
 	public static void main(String[] args) {
 		 JaugeNaturelTest jauge = new JaugeNaturelTest();
 		 try {
