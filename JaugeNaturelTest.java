@@ -30,7 +30,7 @@ public class JaugeNaturelTest {
 
 	@Test
 	public void testEstVert() {
-		assertTrue("ma jauge est Vert", jauge.estVert());
+		assertTrue("ma jauge est Verte", jauge.estVert());
 	}
 
 	@Test
@@ -50,12 +50,39 @@ public class JaugeNaturelTest {
 	public void testDecrementer() {
 		long val = jauge.getValeur(); 
 		jauge.decrementer();
-		assertEquals("ma jauge est bien décrémenté! Youpii",val-1, jauge.getValeur());
+		assertEquals("ma jauge est bien décrémentée! Youpii",val-1, jauge.getValeur());
 	}
 
 	@Test
 	public void testToString() {
 		assertEquals("Affichage Parfait !! ", "<50 [8,50]>", jauge.toString());
+	}
+
+	@Test
+	public void testDansIntervalle() {
+		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
+		
+	}
+	public void testDeplacement() {
+		jauge= new JaugeNaturel(100, 345,102);
+		while(!jauge.estBleu()) {
+			jauge.decrementer();
+		}
+		assertTrue(jauge.estBleu() && !jauge.estVert() && !jauge.estRouge());
+		while(!jauge.estVert()) {
+			jauge.incrementer();
+		}
+		assertTrue(!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
+	}
+
+	public void testLimiteVigieMaxInferieurVigieMin() {
+		jauge= new JaugeNaturel(345, 100,150);
+		assertFalse("min > max",jauge.getMin>jauge.getMax);
+	}
+	
+	public void testMaxEgaleMin() {
+		jauge= new JaugeNaturel(100, 100,100);
+		assertFalse("min = max", jauge.getMin==jauge.getMax);
 	}
 	
 	public static void main(String[] args) {
