@@ -57,7 +57,16 @@ public class JaugeNaturelTest {
 	public void testToString() {
 		assertEquals("Affichage Parfait !! ", "<50 [8,50]>", jauge.toString());
 	}
-	
+
+	@Test
+	public void testDansIntervalle() {
+		
+		
+		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
+		
+		
+	}
+
 	public static void main(String[] args) {
 		 JaugeNaturelTest jauge = new JaugeNaturelTest();
 		 try {
